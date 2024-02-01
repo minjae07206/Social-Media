@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Website</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+  <body>
+    <main>
+        <h1>Welcome to Settings</h1>  
+        <h5>{{user.username}}</h5>
+        <h5>{{user.email}}</h5>
+        <!-- enctype="multipart/form-data" is needed to sumbit image files in a form -->
+        <form action="" method="POST" enctype="multipart/form-data">
+          {%csrf_token%}
+          <input type="file" name="image" placeholder="">
+          <textarea id="about" name="bio" rows="3">{{user_profile.bio}}</textarea>
+          <label>Location</label>
+          <input type="text" name="location" value="{{user_profile.location}}">
+          <button><a href="/">Cancel</a></button>
+          <button type="submit">Save</button>
+        </form>
+    </main>
+	<script src="index.js"></script>
+  </body>
+</html>
