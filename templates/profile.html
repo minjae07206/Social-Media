@@ -12,7 +12,15 @@
     <main>
         <h1>Welcome to Profile of {{user_profile.user.username}}</h1>  
         <h3>{{user_profile.bio}}</h3>  
-        <h3>Number of Posts: {{user_post_length}}</h3>  
+        <h3>Number of Posts: {{user_post_length}}</h3>
+        <h3>Number of Followers</h3>
+        <h3>Number Following: </h3>
+        <form action="/follow" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="follower" value="{{user.username}}"/>
+            <input type="hidden" name="user" value="{{user_object.username}}"/>
+            <button type="submit">Follow</button>
+        </form>
         
     </main>
 	<script src="index.js"></script>
