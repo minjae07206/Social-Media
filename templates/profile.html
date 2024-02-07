@@ -13,15 +13,20 @@
         <h1>Welcome to Profile of {{user_profile.user.username}}</h1>  
         <h3>{{user_profile.bio}}</h3>  
         <h3>Number of Posts: {{user_post_length}}</h3>
-        <h3>Number of Followers</h3>
-        <h3>Number Following: </h3>
+        <h3>Number of Followers: {{user_followers}}</h3>
+        <h3>Number Following: {{user_following}}</h3>
+        {% if user.username == user_object.username %}
+        <a href="/settings">Settings</a>
+        {% else %}
         <form action="/follow" method="POST">
             {% csrf_token %}
             <input type="hidden" name="follower" value="{{user.username}}"/>
             <input type="hidden" name="user" value="{{user_object.username}}"/>
-            <button type="submit">Follow</button>
+            <button type="submit">{{button_text}}</button>
         </form>
-        
+
+        {% endif %}
+        <a href="/">Home</a>
     </main>
 	<script src="index.js"></script>
   </body>
